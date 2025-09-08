@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./style.css">
+    <title>webdesktop</title>
+  </head>
+  <body>
+    <header>
+      <div style="height: 0.5vh;"></div>
+      <span>&nbsp;</span><a style="font-size: 105%;" id="date">0:00</a>
+      <span></span><a onclick="menu()" style="font-size: 105%;">webdesktop</a>
+      <div style="height: 0.5vh;"></div>
+    </header>
+    <div style="height: 0.5vh;"></div>
+    <div id="menu">
+      <div style="height: 0.5vh;"></div>
+      <div>
+        <span>&nbsp;</span><a onclick="document.getElementById('app').data = './apps/sysinfo/index.html'">About system.</a>
+        <div style="height: 0.5vh;"></div>
+        <span>&nbsp;</span><a onclick="document.getElementById('app').data = './apps/apps/index.html'">Apps.</a>
+	<div style="height: 0.5vh;"></div>
+      </div>
+    </div>
+    <div id="application">
+         <object data="./apps/welcome/index.html" style="border:none;" width="100%" height="100%" id="app" onclick="document.getElementById('app').focus()" onError="document.getElementById('app').data = './apps/error/index.html'" sandbox></object>
+    </div>
+  </body>
+
+  <script src="./webdesktop.js"></script>
+  <script src="./brython/brython.js"></script>
+  <script src="./brython/brython_stdlib.js"></script>
+
+  <script type="text/python">
+	from browser import document
+	from browser.widgets.dialog import InfoDialog
+
+	warn = InfoDialog("Warning!", "WebDesktop is still in development, so here's many bugs!")
+	warn.element.style.zIndex = "9999"
+
+	document <= warn
+  </script>
+</html>
